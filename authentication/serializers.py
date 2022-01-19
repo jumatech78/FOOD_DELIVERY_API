@@ -21,16 +21,15 @@ class UserCreationSerializer(serializers.ModelSerializer):
    raise serializers.ValidationError(detail="User with username exists")
 
 
- email_exists=User.objects.filter(username=attrs['email']).exists()
-
- if email_exists:
-  raise serializers.ValidationError(detail="User with email exists")
-
-
- phonenumber_exists=User.objects.filter(username=attrs['phone_number']).exits()
-
- if phone_number_exists:
-  raise serializers.ValidationError(detail="User with phonenumber exists")
+  email_exists=User.objects.filter(username=attrs['email']).exists()
+ 
+  if email_exists:
+   raise serializers.ValidationError(detail="User with email exists")
 
 
- return super().validate(attrs)
+  phonenumber_exists=User.objects.filter(username=attrs['phone_number']).exists()
+
+  if phonenumber_exists:
+   raise serializers.ValidationError(detail="User with phonenumber exists")
+ 
+  return super().validate(attrs)

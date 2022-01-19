@@ -11,7 +11,7 @@ class HelloAuthView(generics.GenericAPIView):
   return Response(data={"message":"Hello Auth"},status=status.HTTP_200_OK)
 
 
-class UserCreateView(generics.GenericApiView):
+class UserCreateView(generics.GenericAPIView): 
 
  serializer_class=serializers.UserCreationSerializer
 
@@ -24,5 +24,5 @@ class UserCreateView(generics.GenericApiView):
    serializer.save()
    return Response(data=serializer.data,status=status.HTTP_201_CREATED)
 
-  return Response(data=serializer.errors,status_code=status.HTTP_400_BAD_REQUEST)
+  return Response(data=serializer.errors,status=status.HTTP_400_BAD_REQUEST)
  
